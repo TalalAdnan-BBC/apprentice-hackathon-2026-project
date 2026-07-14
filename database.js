@@ -19,10 +19,14 @@ async function removeOTJ(db, otjID) {
     await db.run(`DELETE FROM otj WHERE otjID = ${otjID};`);
 }
 
+async function getOTJs(db) {
+    return await db.all("SELECT * FROM otj");
+}
+
 async function addUser(db, name, courseID, courseStartDate) {
     db.run(
         "INSERT INTO users (name, courseID, courseStartDate)"
-        + `VALUES ('${name}', '${courseID}' '${courseStartDate}');`
+        + `VALUES ('${name}', '${courseID}', '${courseStartDate}');`
     )
 }
 
@@ -30,12 +34,14 @@ async function deleteUser(db, userID) {
     db.run(`DELETE FROM users WHERE userID = ${userID};`);
 }
 
+async function getUsers(db) {
+    return await db.all("SELECT * FROM users");
+}
+
 async function main() {
     const db = await connectDB();
 
-    const users = await db.all(
-        "SELECT * FROM users"
-    );
+    const users = await getOTJs(db);
 
     console.log(users);
 }
