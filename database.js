@@ -23,6 +23,10 @@ async function getOTJs(db) {
     return await db.all("SELECT * FROM otj");
 }
 
+async function getOTJsFromUser(db, userID) {
+    return await db.all(`SELECT * FROM otj WHERE userID = ${userID}`);
+}
+
 async function addUser(db, name, courseID, courseStartDate) {
     db.run(
         "INSERT INTO users (name, courseID, courseStartDate)"
