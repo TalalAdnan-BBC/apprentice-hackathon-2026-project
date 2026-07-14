@@ -48,9 +48,21 @@ async function getCSV(userID) {
 }
 
 
-async function getKSB(otjID)
-{
-    console.log(await ksbList(otjID));
+async function totalHours(userID) {
+    const db = await connectDB();
+
+    const otjLogs = await db.all(
+        `SELECT hours FROM otj WHERE userID = ${userID}`
+    );
+
+    let totalHours = 0;
+    for (const log of otjLogs) {
+        totalHours += log.hours;
+    }
+
+    console.log(totalHours)
 }
 
-getCSV(1);
+activeUser = 1;
+// getCSV(activeUser);
+totalHours(activeUser);
