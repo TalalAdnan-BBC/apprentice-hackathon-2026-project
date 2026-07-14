@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  background-color: #eb34d2;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -8,9 +9,57 @@ a {
 }
 
 .username {
+  
+  text-align: justify;
+  background-color: #eb34d2;
+  color: #FFFFFF;
+  font-size: 3px;
+}
+
+.progress-bar{
   padding: 100px;
   text-align: justify;
   background: #eb34d2;
   color: #FFFFFF;
-  font-size: 3px;
+  font-size: 3px;  
 }
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@font-face {
+  font-family: 'BBC-Reith-Sans-Light';
+  src: url('./fonts/bbcreithsans_w_lt.woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BBC-Reith-Sans-Regular';
+  src: url('./fonts/bbcreithsans_w_rg.woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BBC-Reith-Sans-Bold';
+  src: url('./fonts/bbcreithsans_w_bd.woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.gantt-container {
+  z-index: 5;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
