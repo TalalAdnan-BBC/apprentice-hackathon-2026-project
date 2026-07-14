@@ -10,16 +10,16 @@ async function connectDB() {
 }
 
 
-async function printLog() {
+async function main() {
     const db = await connectDB();
 
     const users = await db.all(
-        "SELECT * FROM users"
+        "SELECT date, hours, description FROM otj WHERE userID = 1 ORDER BY date ASC"
     );
 
     console.log(users);
 }
 
 
-printLog();
+main();
 
