@@ -1,5 +1,9 @@
-# npm
 node_modules
+*.mjs
+*.d.mts
+*.d.mts
+.env# npm
+
 package-lock.json
 npm-shrinkwrap.json
 *.log
