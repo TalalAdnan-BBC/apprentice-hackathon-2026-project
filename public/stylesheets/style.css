@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+.username{
+  padding: 100px;
+  text-align: justify;
+  background: #eb34d2;
+  color: #FFFFFF;
+  font-size: 3px;
+}
+
+.progressupload {
+  height: 20px;
+  margin-top: 25px;
+}
+
+.progress {
+  background-color: green;
+  width: 0%;
+  height: 20px;
+
+}
+
+.progressBar {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
