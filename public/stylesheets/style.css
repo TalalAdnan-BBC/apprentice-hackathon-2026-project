@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.username{
+  padding: 100px;
+  text-align: justify;
+  background: #eb34d2;
+  color: #FFFFFF;
+  font-size: 3px;
+}
