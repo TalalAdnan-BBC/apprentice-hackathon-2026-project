@@ -60,9 +60,21 @@ async function totalHours(userID) {
         totalHours += log.hours;
     }
 
-    console.log(totalHours)
+    return(totalHours)
+}
+
+async function hoursBar(userID) {
+    hoursComplete = await totalHours(userID);
+    const db = await connectDB();
+    const userCourse = await db.get(
+        `SELECT courseID FROM users WHERE userID = ${userID}`
+    );
+    const hourTarget = await db.get(
+        `SELECT minHours FROM courses WHERE courseID = ${userCourse.courseID}`
+    );
+    
+    return(hoursComplete/hourTarget.minHours);
 }
 
 activeUser = 1;
 // getCSV(activeUser);
-totalHours(activeUser);
