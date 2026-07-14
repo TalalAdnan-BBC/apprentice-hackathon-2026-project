@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "incremental": true,
+      "target": "es2022",
+      "module": "NodeNext",
+      "declaration": true,
+      "strict": true,
+      "moduleResolution": "nodenext",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "rootDir": ".",
+      "outDir": ".",
+      "resolveJsonModule": true,
+      
+    },
+    "exclude": ["node_modules", "**/*.test.ts"]
+}

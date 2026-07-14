@@ -1,0 +1,5 @@
+node_modules
+*.mjs
+*.d.mts
+*.d.mts
+.env
