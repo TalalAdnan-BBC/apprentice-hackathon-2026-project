@@ -59,30 +59,28 @@ a {
   background-color: #04AA6D;
 }
 
-
-@font-face {
-  font-family: 'BBC-Reith-Sans-Light';
-  src: url('./fonts/bbcreithsans_w_lt.woff2');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'BBC-Reith-Sans-Regular';
-  src: url('./fonts/bbcreithsans_w_rg.woff2');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'BBC-Reith-Sans-Bold';
-  src: url('./fonts/bbcreithsans_w_bd.woff2');
-  font-weight: 600;
-  font-style: normal;
+#container {
+	width: 600px;
+	height: auto;
 }
 
-.gantt-container {
-  z-index: 5;
+.row {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #AFAFAF;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.name {
+	position: relative;
+	display: inline-block;
+	width: 75%;
+	line-height: 45px;
+}
+
+.score {
+	position: relative;
+	display: inline-block;
+	width: 25%;
+}

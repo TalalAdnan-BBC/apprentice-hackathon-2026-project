@@ -3,6 +3,11 @@ var router = express.Router();
 const app = express();
 
 /* GET home page. */
+
+app.get('/login', (req, res) => {
+  res.render('login', { title: 'Login' });
+});
+
 app.get('/', function(req, res, next) {
   /*const chartData = {
     labels: ['JavaScript', 'Python', 'Java', 'C++', 'Ruby'],
