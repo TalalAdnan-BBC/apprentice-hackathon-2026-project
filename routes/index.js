@@ -25,7 +25,13 @@ app.get('/', function(req, res, next) {
     labels: ['JavaScript', 'Python', 'Java', 'C++', 'Ruby'],
     values: [45, 25, 15, 10, 5]
   };*/
-  res.render('index', { title: 'Express' }); //{ data: chartData }
+
+  // const user = req.cookies("userID");
+  const { userID } = req.cookies;
+
+  
+
+  res.render('index', { title: 'Express', userID: userID }); //{ data: chartData }
 });
 
 app.get('/leaderboard', (req, res) => {
@@ -38,10 +44,25 @@ app.get('/milestones', (req, res) => {
 });
 
 // 3. Contact Route
-app.get('/otjLog', (req, res) => {
-  res.render('otjLog', { title: 'OTJ Log' });
-});
+const { connectDB, getOTJsFromUser } = require("../database");
+const { ksbList } = require("../otj-export");
 
+app.get('/otjLog', async (req, res) => {
+    const db = await connectDB();
+
+    const userID = 1;
+
+    const logs = await getOTJsFromUser(db, userID);
+
+    for (const log of logs) {
+        log.ksbs = await ksbList(log.otjID);
+    }
+
+    res.render('otjLog', {
+        title: 'OTJ Log',
+        logs
+    });
+});
 /*%app.get("/", async (req,res) => {
   const projects = await db.query(SELECT this.name, progress FROM projects);
   res.render("index", {
