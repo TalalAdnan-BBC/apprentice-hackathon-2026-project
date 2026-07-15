@@ -76,5 +76,31 @@ async function hoursBar(userID) {
     return(hoursComplete/hourTarget.minHours);
 }
 
-activeUser = 1;
-// getCSV(activeUser);
+async function ksbBar(userID) {
+    const db = await connectDB();
+    const doneKSBs = [];
+    const userCourse = await db.get(
+        `SELECT courseID FROM users WHERE userID = ${userID}`
+    );
+    const ksbCountDB = await db.get(
+        `SELECT ksbCount FROM courses WHERE courseID = ${userCourse.courseID}`
+    );
+    const ksbsToDo = ksbCountDB.ksbCount;
+    const userOTJs = await db.all(
+        `SELECT otjID FROM otj WHERE userID = ${userID}`
+    );
+    for (const otj of userOTJs) {
+        const otjKSBs = await db.all(
+            `SELECT ksb FROM ksb WHERE otjID = ${otj.otjID}`
+        );
+        for (const singleKSB of otjKSBs) {
+            if (doneKSBs.indexOf(singleKSB.ksb) === -1) doneKSBs.push(singleKSB.ksb);
+        }
+    }
+    const ksbsDone = doneKSBs.length;
+    const ksbPercent = (ksbsDone/ksbsToDo);
+    console.log(ksbPercent);
+}
+
+activeUser = 2;
+ksbBar(activeUser);
