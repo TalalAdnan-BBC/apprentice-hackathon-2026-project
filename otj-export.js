@@ -1,6 +1,7 @@
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
 const fs = require("fs");
+const bcrypt = require('bcrypt');
 
 
 async function connectDB() {
@@ -10,7 +11,7 @@ async function connectDB() {
     });
 }
 
-
+//Get all the KSBs for an OTJ entry as a comma separated list
 async function ksbList(otjID) {
     const db = await connectDB();
 
@@ -28,6 +29,7 @@ async function ksbList(otjID) {
 }
 
 
+//Exports all of a users OTJ logs as a CSV under "otjLogs.csv" in chronological order
 async function getCSV(userID) {
     const db = await connectDB();
 
@@ -48,6 +50,7 @@ async function getCSV(userID) {
 }
 
 
+//Gets number of OTJ hours a user has logged
 async function totalHours(userID) {
     const db = await connectDB();
 
@@ -63,6 +66,8 @@ async function totalHours(userID) {
     return(totalHours)
 }
 
+
+//Gets percentage of hours done Vs. required hours for a user
 async function hoursBar(userID) {
     hoursComplete = await totalHours(userID);
     const db = await connectDB();
@@ -76,6 +81,8 @@ async function hoursBar(userID) {
     return(hoursComplete/hourTarget.minHours);
 }
 
+
+//Gets percentage of KSBs done Vs. required for a user
 async function ksbBar(userID) {
     const db = await connectDB();
     const doneKSBs = [];
@@ -102,5 +109,15 @@ async function ksbBar(userID) {
     return(ksbPercent);
 }
 
+
+//Returns hashed version of plaintext password
+async function hashPW(password) {
+    const saltRounds = 12;
+    const hash = await bcrypt.hash(password, saltRounds);
+    return(hash);
+}
+
+
 activeUser = 2;
-ksbBar(activeUser);
+// ksbBar(activeUser);
+hashPW("Password1234!");
