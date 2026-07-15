@@ -1,14 +1,92 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel=StyleSheet href="../public/stylesheets/style.css" type="text/css">
+    <link rel=StyleSheet href="./stylesheets/style.css" type="text/css">
+
     <title>User Profile</title>
   </head>
+<hr>
   <body>
-    <div class="username"></div>
-      <h1>User Profile</h1>
-      <h2>KSBs</h2>
-  </div>
-  </body>
+    <div class="row">
+      <div class="column">
+        <img src="img_snow.jpg" alt="" style="width:100%">
+      </div>
+      <div class="username"></div>
+        <h1>User Profile</h1>
+      </div>
+    </div>
+   
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<body>
+<div class="w3-container">
+
+<h2>KSBs</h2>
+<div class="progress-bar"></div>
+<div id="myProgress1">
+  <div id="myBar1"></div>
+</div>
+
+<br>
+<button onclick="move1()">Click Me</button> 
+<script>
+  var i = 0;
+  function move1() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById("myBar1");
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  } 
+</script>
+
+<div class="chart-container">
+  <canvas id="myPieChart"></canvas>
+</div>
+   
+
+<h2>OTJs</h2>
+<div class="progress-bar"></div>
+<div id="myProgress2">
+  <div id="myBar2"></div>
+</div>
+
+<br>
+<button onclick="move2()">Click Me</button> 
+<script>
+  var i = 0;
+  function move2() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById("myBar2");
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  } 
+</script>
+</div>
+</body>
+  
 </html>
