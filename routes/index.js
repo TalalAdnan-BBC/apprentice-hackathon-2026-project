@@ -25,7 +25,13 @@ app.get('/', function(req, res, next) {
     labels: ['JavaScript', 'Python', 'Java', 'C++', 'Ruby'],
     values: [45, 25, 15, 10, 5]
   };*/
-  res.render('index', { title: 'Express' }); //{ data: chartData }
+
+  // const user = req.cookies("userID");
+  const { userID } = req.cookies;
+
+  
+
+  res.render('index', { title: 'Express', userID: userID }); //{ data: chartData }
 });
 
 app.get('/leaderboard', (req, res) => {
