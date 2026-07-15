@@ -40,4 +40,17 @@ app.use(function(err, req, res, next) {
   res.render('/');
 });
 
+const { getCSV } = require("./otj-export");
+
+app.get("/download-otj", async (req, res) => {
+    // const userID = req.session.userID;
+    const userID = 1;
+
+    const csv = await getCSV(userID);
+
+    res.header("Content-Type", "text/csv");
+    res.attachment("otjLogs.csv");
+    res.send(csv);
+});
+
 module.exports = app;

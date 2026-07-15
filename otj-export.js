@@ -46,8 +46,10 @@ async function getCSV(userID) {
         csv += `"${log.date}","${log.description}","${ksbString}","${log.hours}"\n`;
     }
 
-    fs.writeFileSync("otjLogs.csv", csv);
+    return csv;
 }
+
+module.exports = { getCSV };
 
 
 //Gets number of OTJ hours a user has logged
