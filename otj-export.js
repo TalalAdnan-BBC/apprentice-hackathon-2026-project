@@ -67,6 +67,22 @@ async function totalHours(userID) {
 }
 
 
+//Get all hours for a certain user from a certain month (in yyyy-mm string format)
+async function monthHours(userID, month) {
+    const db = await connectDB();
+
+    const otjLogs = await db.all(
+        `SELECT hours FROM otj WHERE strftime('%Y-%m', date) = '${month}' AND userID = ${userID};`
+    );
+
+    let totalHours = 0;
+    for (const log of otjLogs) {
+        totalHours += log.hours;
+    }
+
+    console.log(totalHours);
+}
+
 //Gets percentage of hours done Vs. required hours for a user
 async function hoursBar(userID) {
     hoursComplete = await totalHours(userID);
@@ -125,7 +141,7 @@ async function checkPW(password, hash) {
 }
 
 activeUser = 2;
-// ksbBar(activeUser);
+monthHours(activeUser, "2026-07");
 // hashPW("Password1");
 // hashPW("Password2");
 // hashPW("Password3");
@@ -137,8 +153,8 @@ activeUser = 2;
 
 async function main() {
     if (await checkPW(
-        "Password1",
-        "$2b$12$Jrk5iX/2Yre0nJ39qqUuWe4Ex8P7KxZ2rgmQyU67ecg57Cvqcrfye"
+        "Password4",
+        "$2b$12$8V1W9T8lvOmC9KAFAN8fxOjUfrQiQeRoOh48KGFmg1zgKr7Y56g7."
     )) {
         console.log("Login successful");
     } else {
