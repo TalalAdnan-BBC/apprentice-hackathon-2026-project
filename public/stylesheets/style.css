@@ -24,6 +24,18 @@ a {
   font-size: 3px;  
 }
 
+#myBar1 {
+  width: 1%;
+  height: 30px;
+  background-color: #04AA6D;
+}
+
+#myBar2 {
+  width: 1%;
+  height: 30px;
+  background-color: #04AA6D;
+}
+
 .column {
   float: left;
   width: 33.33%;
