@@ -16,8 +16,8 @@ app.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' }); //{ data: chartData }
 });
 
-app.get('/profile', (req, res) => {
-  res.render('profile', { title: 'Profile' });
+app.get('/leaderboard', (req, res) => {
+  res.render('leaderboard', { title: 'Leaderboard' });
 });
 
 // 3. Contact Route
