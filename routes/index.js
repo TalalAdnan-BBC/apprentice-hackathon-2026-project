@@ -1,4 +1,5 @@
 var express = require('express');
+const { login } = require('../database');
 var router = express.Router();
 const app = express();
 
@@ -7,6 +8,17 @@ const app = express();
 app.get('/login', (req, res) => {
   res.render('login', { title: 'Login' });
 });
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  const result = await login(username, password);
+
+  if (result >= 0) {
+    res.cookie("userID", result.toString(), 9000000);
+    res.render("index", { title: "Test" });
+  }
+})
 
 app.get('/', function(req, res, next) {
   /*const chartData = {
