@@ -99,7 +99,7 @@ async function ksbBar(userID) {
     }
     const ksbsDone = doneKSBs.length;
     const ksbPercent = (ksbsDone/ksbsToDo);
-    console.log(ksbPercent);
+    return(ksbPercent);
 }
 
 activeUser = 2;
