@@ -27,7 +27,7 @@ app.get('/milestones', (req, res) => {
 
 // 3. Contact Route
 app.get('/otjLog', (req, res) => {
-  res.render('otjLog', { title: 'OTJ' });
+  res.render('otjLog', { title: 'OTJ Log' });
 });
 
 /*%app.get("/", async (req,res) => {
