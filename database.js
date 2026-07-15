@@ -60,17 +60,23 @@ async function getUsers(db) {
 }
 
 // Returns true if the login was successful
-async function login(db, name, password) {
+async function login(name, password) {
+    const db = await connectDB();
+
     // Find user in db
     const users = await db.all(
         `SELECT * FROM users WHERE name = '${name}'`
     );
 
     if (users.length < 1) {
-        return false
+        return -1
     }
 
-    return result = await checkPW(password, users[0]["passwords"]);
+    result = await checkPW(password, users[0]["passwords"]);
+
+    if (result) {
+        return users[0]["userID"];
+    }
 }
 
 async function main() {
@@ -80,9 +86,11 @@ async function main() {
     // const foo = await login(db, "Talal Adnan", "asdf");
     // const foo = await getUsers(db);
 
-    // const foo = await login(db, "Talal Adnan", "Password1");
+    const foo = await getUsers(db);
 
-    // console.log(foo);
+    console.log(foo);
 }
 
-main();
+// main();
+
+module.exports = { login };
