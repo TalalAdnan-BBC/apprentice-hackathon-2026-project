@@ -49,7 +49,6 @@ async function getCSV(userID) {
     return csv;
 }
 
-module.exports = { getCSV };
 
 
 //Gets number of OTJ hours a user has logged
@@ -166,4 +165,4 @@ async function main() {
 
 // main();
 
-module.exports = { checkPW }
+module.exports = { checkPW, getCSV }

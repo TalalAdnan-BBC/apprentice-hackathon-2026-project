@@ -10,5 +10,21 @@
     <title>OTJ Log</title>
   </head>
 
-  <!-- Button to open the modal login form -->
-<!-- <button onclick="document.getElementById('id01').style.display='block'">Login</button> -->
+
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Hours</th>
+    </tr>
+
+    <% logs.forEach(log => { %>
+        <tr>
+            <td><%= log.date %></td>
+            <td><%= log.description %></td>
+            <td><%= log.hours %></td>
+        </tr>
+    <% }) %>
+
+</table>

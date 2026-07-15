@@ -24,6 +24,32 @@ app.use('/users', usersRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
+const { getCSV } = require("./otj-export");
+const { connectDB, getOTJsFromUser } = require("./database");
+
+app.get("/download-otj", async (req, res) => {
+    // const userID = req.session.userID;
+    const userID = 1;
+
+    const csv = await getCSV(userID);
+
+    res.header("Content-Type", "text/csv");
+    res.attachment("otjLogs.csv");
+    res.send(csv);
+});
+
+app.get("/otjLog", async (req, res) => {
+    const db = await connectDB();
+
+    const userID = 1; // replace with session later
+
+    const logs = await getOTJsFromUser(db, userID);
+
+    res.render("otjLog", {
+        logs
+    });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -38,19 +64,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('/');
-});
-
-const { getCSV } = require("./otj-export");
-
-app.get("/download-otj", async (req, res) => {
-    // const userID = req.session.userID;
-    const userID = 1;
-
-    const csv = await getCSV(userID);
-
-    res.header("Content-Type", "text/csv");
-    res.attachment("otjLogs.csv");
-    res.send(csv);
 });
 
 module.exports = app;
