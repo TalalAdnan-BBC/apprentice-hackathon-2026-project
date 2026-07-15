@@ -26,10 +26,25 @@ app.get('/milestones', (req, res) => {
 });
 
 // 3. Contact Route
-app.get('/otjLog', (req, res) => {
-  res.render('otjLog', { title: 'OTJ Log' });
-});
+const { connectDB, getOTJsFromUser } = require("../database");
+const { ksbList } = require("../otj-export");
 
+app.get('/otjLog', async (req, res) => {
+    const db = await connectDB();
+
+    const userID = 1;
+
+    const logs = await getOTJsFromUser(db, userID);
+
+    for (const log of logs) {
+        log.ksbs = await ksbList(log.otjID);
+    }
+
+    res.render('otjLog', {
+        title: 'OTJ Log',
+        logs
+    });
+});
 /*%app.get("/", async (req,res) => {
   const projects = await db.query(SELECT this.name, progress FROM projects);
   res.render("index", {

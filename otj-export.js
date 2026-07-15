@@ -165,4 +165,4 @@ async function main() {
 
 // main();
 
-module.exports = { checkPW, getCSV }
+module.exports = { checkPW, getCSV, ksbList }

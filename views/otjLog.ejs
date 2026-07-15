@@ -10,21 +10,43 @@
     <title>OTJ Log</title>
   </head>
 
+<body>
 
+<h1 class="page-title">OTJ Log</h1>
 
-<table>
-    <tr>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Hours</th>
-    </tr>
+<a class="download-button" href="/download-otj">
+    Download CSV
+</a>
 
-    <% logs.forEach(log => { %>
+<table class="otj-table">
+    <thead>
         <tr>
-            <td><%= log.date %></td>
-            <td><%= log.description %></td>
-            <td><%= log.hours %></td>
+            <th>Date</th>
+            <th>Description</th>
+            <th>KSBs</th>
+            <th>Hours</th>
         </tr>
-    <% }) %>
+    </thead>
 
+    <tbody>
+      <% logs.forEach(log => { %>
+          <tr>
+              <td>
+                  <%= log.date.split("-").reverse().join("/") %>
+              </td>
+              <td>
+                  <%= log.description %>
+              </td>
+              <td>
+                  <%= log.ksbs %>
+              </td>
+              <td>
+                  <%= log.hours %>
+              </td>
+          </tr>
+      <% }); %>
+  </tbody>
 </table>
+
+</body>
+</html>
