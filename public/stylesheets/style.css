@@ -17,7 +17,7 @@ a {
 }
 
 .progress-bar{
-  padding: 100px;
+  padding: 10px;
   text-align: justify;
   background: #eb34d2;
   color: #FFFFFF;
@@ -36,6 +36,29 @@ a {
   clear: both;
   display: table;
 }
+
+#myProgress1 {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myProgress2 {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar1 {
+  width: 1%;
+  height: 30px;
+  background-color: #04AA6D;
+}
+
+#myBar2 {
+  width: 1%;
+  height: 30px;
+  background-color: #04AA6D;
+}
+
 
 @font-face {
   font-family: 'BBC-Reith-Sans-Light';

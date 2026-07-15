@@ -1,9 +1,30 @@
 var express = require('express');
 var router = express.Router();
+const app = express();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+app.get('/', function(req, res, next) {
+  /*const chartData = {
+    labels: ['JavaScript', 'Python', 'Java', 'C++', 'Ruby'],
+    values: [45, 25, 15, 10, 5]
+  };*/
+  res.render('index', { title: 'Express' }); //{ data: chartData }
 });
 
-module.exports = router;
+app.get('/profile', (req, res) => {
+  res.render('profile', { title: 'Profile' });
+});
+
+// 3. Contact Route
+app.get('/milestones', (req, res) => {
+  res.render('milestones', { title: 'Milestones' });
+});
+
+/*%app.get("/", async (req,res) => {
+  const projects = await db.query(SELECT this.name, progress FROM projects);
+  res.render("index", {
+    projects: projects.rows
+  });
+});*/
+
+module.exports = app;
