@@ -128,7 +128,7 @@ activeUser = 2;
 // hashPW("Password1");
 // hashPW("Password2");
 // hashPW("Password3");
-// hashPW("Password4");
+hashPW("Password4");
 
 
 // console.log(await checkPW("Password1", "$2b$12$Jrk5iX/2Yre0nJ39qqUuWe4Ex8P7KxZ2rgmQyU67ecg57Cvqcrfye"));
@@ -136,8 +136,8 @@ activeUser = 2;
 
 async function main() {
     if (await checkPW(
-        "Password1",
-        "$2b$12$Jrk5iX/2Yre0nJ39qqUuWe4Ex8P7KxZ2rgmQyU67ecg57Cvqcrfye"
+        "Password4",
+        "$2b$12$8V1W9T8lvOmC9KAFAN8fxOjUfrQiQeRoOh48KGFmg1zgKr7Y56g7."
     )) {
         console.log("Login successful");
     } else {
