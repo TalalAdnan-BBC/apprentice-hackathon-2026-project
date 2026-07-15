@@ -114,10 +114,35 @@ async function ksbBar(userID) {
 async function hashPW(password) {
     const saltRounds = 12;
     const hash = await bcrypt.hash(password, saltRounds);
-    return(hash);
+    console.log(hash);
 }
 
 
+//Check password is correct
+async function checkPW(password, hash) {
+    return await bcrypt.compare(password, hash);
+}
+
 activeUser = 2;
 // ksbBar(activeUser);
-hashPW("Password1234!");
+// hashPW("Password1");
+// hashPW("Password2");
+// hashPW("Password3");
+// hashPW("Password4");
+
+
+// console.log(await checkPW("Password1", "$2b$12$Jrk5iX/2Yre0nJ39qqUuWe4Ex8P7KxZ2rgmQyU67ecg57Cvqcrfye"));
+
+
+async function main() {
+    if (await checkPW(
+        "Password1",
+        "$2b$12$Jrk5iX/2Yre0nJ39qqUuWe4Ex8P7KxZ2rgmQyU67ecg57Cvqcrfye"
+    )) {
+        console.log("Login successful");
+    } else {
+        console.log("Incorrect username or password");
+    }
+}
+
+main();
