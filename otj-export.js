@@ -118,7 +118,8 @@ async function hashPW(password) {
 }
 
 
-//Check password is correct
+// Check password is correct
+// Returns True if correct
 async function checkPW(password, hash) {
     return await bcrypt.compare(password, hash);
 }
@@ -145,4 +146,6 @@ async function main() {
     }
 }
 
-main();
+// main();
+
+module.exports = { checkPW }
