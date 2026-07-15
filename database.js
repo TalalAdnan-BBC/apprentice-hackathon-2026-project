@@ -94,3 +94,5 @@ async function main() {
 // main();
 
 module.exports = { login };
+
+module.exports = { connectDB, getOTJsFromUser, login };
