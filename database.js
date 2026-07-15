@@ -1,5 +1,6 @@
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
+const { hashPW, checkPW } = require("./otj-export");
 
 async function connectDB() {
     return open({
@@ -41,10 +42,12 @@ async function getKSBs(db) {
     return await db.all("SELECT * FROM ksb");
 }
 
-async function addUser(db, name, courseID, courseStartDate) {
+async function addUser(db, name, password, courseID, courseStartDate) {
+    const hashedPW = await hashPW(password);
+
     db.run(
-        "INSERT INTO users (name, courseID, courseStartDate)"
-        + `VALUES ('${name}', '${courseID}', '${courseStartDate}');`
+        "INSERT INTO users (name, courseID, courseStartDate, passwords)"
+        + `VALUES ('${name}', '${courseID}', '${courseStartDate}', '${hashedPW}');`
     )
 }
 
@@ -56,13 +59,30 @@ async function getUsers(db) {
     return await db.all("SELECT * FROM users");
 }
 
+// Returns true if the login was successful
+async function login(db, name, password) {
+    // Find user in db
+    const users = await db.all(
+        `SELECT * FROM users WHERE name = '${name}'`
+    );
+
+    if (users.length < 1) {
+        return false
+    }
+
+    return result = await checkPW(password, users[0]["passwords"]);
+}
+
 async function main() {
     const db = await connectDB();
 
-    // await submitOTJ(db, "2003-08-26", 2, 5, "Test Description", ["K1", "S3"]);
-    // const otjs = await getKSBs(db);
+    // await addUser(db, "Test User", "Password3", 3, "2003-08-26");
+    // const foo = await login(db, "Talal Adnan", "asdf");
+    // const foo = await getUsers(db);
 
-    // console.log(otjs);
+    // const foo = await login(db, "Talal Adnan", "Password1");
+
+    // console.log(foo);
 }
 
 main();
