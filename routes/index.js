@@ -25,6 +25,11 @@ app.get('/milestones', (req, res) => {
   res.render('milestones', { title: 'Milestones' });
 });
 
+// 3. Contact Route
+app.get('/otj', (req, res) => {
+  res.render('otj', { title: 'OTJ' });
+});
+
 /*%app.get("/", async (req,res) => {
   const projects = await db.query(SELECT this.name, progress FROM projects);
   res.render("index", {
